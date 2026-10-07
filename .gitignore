@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Backend secrets (never commit real credentials)
+public/api/config.secrets.php
+dist/api/config.secrets.php
+*firebase_service_account.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Flutter & Dart (materia_app)
+materia_app/build/
+materia_app/.dart_tool/
+materia_app/.flutter-plugins
+materia_app/.flutter-plugins-dependencies
+materia_app/ios/Pods/
+materia_app/ios/.symlinks/
+materia_app/ios/Flutter/Flutter.framework
+materia_app/ios/Flutter/Flutter.podspec

@@ -1,0 +1,56 @@
+# ----------------------------------------------------------------------
+# 1. Default Directory Index & Disable Directory Browsing
+# ----------------------------------------------------------------------
+DirectoryIndex index.html
+Options -Indexes
+
+# ----------------------------------------------------------------------
+# 2. Security: Block Sensitive Files & Extensions
+# ----------------------------------------------------------------------
+<FilesMatch "(\.(env|sql|log|md|lock|git|svn|bak|config)|config.*\.php|.*\.secrets\.php|firebase_service_account.*\.json)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# 3. Security: HTTP Response Headers
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Enable XSS filtering
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Strict Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 4. Routing: Single Page Application (React Router)
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Fallback rewrite for image assets from /products/ to /product-images/
+    RewriteRule ^products/(.+\.(png|jpe?g|webp|gif|svg))$ /product-images/$1 [L,NC]
+
+    # If the requested file actually exists, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Don't rewrite API calls to index.html
+    RewriteRule ^api/ - [L]
+
+    # Rewrite all other routes (/products, /about, etc.) to index.html
+    RewriteRule . /index.html [L]
+</IfModule>

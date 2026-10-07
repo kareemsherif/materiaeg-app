@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "795397430332",
+    "project_id": "materiaeg-587da",
+    "storage_bucket": "materiaeg-587da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795397430332:android:a3d2316a618bd9b269f739",
+        "android_client_info": {
+          "package_name": "materiaeg.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-qG8f0MZqL2vLw4wvMRny2qiwPt9Q5g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795397430332:android:a3d2316a618bd9b269f739",
+        "android_client_info": {
+          "package_name": "materieaeg.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-qG8f0MZqL2vLw4wvMRny2qiwPt9Q5g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
