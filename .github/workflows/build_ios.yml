@@ -14,32 +14,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Java (for tools)
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           cache: true
 
-      - name: Check Flutter Version & Doctor
+      - name: Flutter Doctor
         run: flutter doctor -v
-
-      - name: Install Dependencies
-        working-directory: materia_app
-        run: |
-          flutter pub get
-          cd ios
-          pod install --repo-update || pod install
-          cd ..
 
       - name: Build iOS Application (Release - No Codesign)
         working-directory: materia_app
         run: |
+          flutter pub get
           flutter build ios --release --no-codesign
           cd build/ios/iphoneos
           mkdir -p Payload
